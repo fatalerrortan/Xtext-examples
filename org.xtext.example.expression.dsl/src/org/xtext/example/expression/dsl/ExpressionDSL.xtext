@@ -1,0 +1,28 @@
+grammar org.xtext.example.expression.dsl.ExpressionDSL with org.eclipse.xtext.common.Terminals
+
+generate expressionDSL "http://www.xtext.org/example/expression/dsl/ExpressionDSL"
+
+/* DSL to demonstrate left-recursion and left-factoring.
+ * Parses simple additions, such as:  4, 4+5, 4+5+6, 4+5+6+7.
+ * A more thorough example can be found among the official
+ * Xtext examples (Arithmetics DSL).
+ */
+Model:
+	expr+=Expression*;
+
+Expression returns Expression:
+/*{*/ AtomicExpression /*} value=INT*/ ({BinaryExpression.left=current} ('+' right=Expression))?;
+
+/* This rule can be skipped if the the commented parts in the
+ * Expression rule are used instead. Yields a cleaner AST
+ * class hierarchy.
+ */
+AtomicExpression returns Expression:
+	value=INT;
+
+//// Left-recursive version:
+//Expression returns Expression:
+//	AtomicExpression | BinaryExpression
+//;
+//BinaryExpression returns Expression:
+//	left=Expression ('+' right=Expression)?;

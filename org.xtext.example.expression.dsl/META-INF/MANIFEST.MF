@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.xtext.example.expression.dsl
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.xtext.example.expression.dsl; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib,
+ org.eclipse.xtext.util,
+ org.eclipse.xtend.lib,
+ org.eclipse.emf.common,
+ org.antlr.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: org.xtext.example.expression.dsl.services,
+ org.xtext.example.expression.dsl.expressionDSL.util,
+ org.xtext.example.expression.dsl.scoping,
+ org.xtext.example.expression.dsl.serializer,
+ org.xtext.example.expression.dsl.validation,
+ org.xtext.example.expression.dsl.generator,
+ org.xtext.example.expression.dsl.expressionDSL.impl,
+ org.xtext.example.expression.dsl.expressionDSL,
+ org.xtext.example.expression.dsl,
+ org.xtext.example.expression.dsl.parser.antlr.internal,
+ org.xtext.example.expression.dsl.parser.antlr
+Import-Package: org.apache.log4j
