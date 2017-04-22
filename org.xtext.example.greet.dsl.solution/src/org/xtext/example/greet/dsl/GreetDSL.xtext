@@ -1,0 +1,17 @@
+grammar org.xtext.example.greet.dsl.GreetDSL with org.eclipse.xtext.common.Terminals
+
+generate greetDSL "http://www.xtext.org/example/greet/dsl/GreetDSL"
+
+Model returns Model:
+	'Persons' '{' allPersons+=Person (',' allPersons+=Person)* '}'
+	'Greetings' '{' greetings+=Greeting* '}';
+
+Person returns Person:
+	name=ID 'from' homeTown=STRING;
+
+Greeting returns Greeting:
+	'Hello' persons+=[Person|ID] (',' persons+=[Person])* '!';
+
+terminal ID:
+	'^'? ('a'..'z' | 'A'..'Z' | 'ä' | 'ö' | 'ü' | 'Ä' | 'Ö' | 'Ü' | 'ß' | '_') ('a'..'z' | 'A'..'Z' | 'ä' | 'ö' | 'ü' |
+	'Ä' | 'Ö' | 'Ü' | 'ß' | '_' | '0'..'9')*;
