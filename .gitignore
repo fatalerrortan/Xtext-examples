@@ -1,0 +1,10 @@
+# Ignore all directories containing derived resources ...
+bin/
+target/
+#src-gen/
+#xtend-gen/
+generated/
+plugin.xml_gen
+
+# ... and not the ignore files.
+!.gitignore
